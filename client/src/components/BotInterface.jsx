@@ -21,14 +21,15 @@ const ChatInterface = () => {
     setLoading(true);
     setResponse("");
 
+
     try {
       const res = await axios.post("http://localhost:5000/doubts", {
         input,
         personality,
         language,
         botName,
-      });
-
+      }); 
+      console.log(res.data);
       setResponse(res.data);
     } catch (err) {
       setResponse("⚠️ Oops! Something went wrong: " + err.message);
