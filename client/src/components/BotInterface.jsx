@@ -22,7 +22,6 @@ const ChatInterface = () => {
     setLoading(true);
     setResponse("");
 
-
     try {
       const res = await axios.post(`${SERVER_URI}`, {
         input,
@@ -30,10 +29,10 @@ const ChatInterface = () => {
         language,
         botName,
       }); 
-      console.log(res.data);
+      // console.log(res.data);
       setResponse(res.data);
     } catch (err) {
-      setResponse("⚠️ Oops! Something went wrong: " + err.message);
+      setResponse("⚠️Oops! Something went wrong: " + err.message);
     } finally {
       setLoading(false);
       setInput("");
