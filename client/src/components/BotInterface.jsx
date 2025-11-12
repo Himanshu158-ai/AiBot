@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Loader from "./Loader";
+const SERVER_URI = import.meta.env.VITE_SERVER_URI || 'http://localhost:5000/doubts'
 
 const ChatInterface = () => {
   const location = useLocation();
@@ -23,7 +24,7 @@ const ChatInterface = () => {
 
 
     try {
-      const res = await axios.post("https://aibot-546k.onrender.com/doubts", {
+      const res = await axios.post(`${SERVER_URI}`, {
         input,
         personality,
         language,
