@@ -23,7 +23,7 @@ const ChatInterface = () => {
 
 
     try {
-      const res = await axios.post("http://localhost:5000/doubts", {
+      const res = await axios.post("https://aibot-546k.onrender.com/doubts", {
         input,
         personality,
         language,
