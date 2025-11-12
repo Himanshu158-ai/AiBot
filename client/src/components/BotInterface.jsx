@@ -18,10 +18,10 @@ const ChatInterface = () => {
   const [response, setResponse] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
 
-  // 👇 Debugging: log only after chatHistory updates
-  useEffect(() => {
-    console.log("📜 Updated Chat History:", chatHistory);
-  }, [chatHistory]);
+  // // 👇 Debugging: log only after chatHistory updates
+  // useEffect(() => {
+  //   console.log("📜 Updated Chat History:", chatHistory);
+  // }, [chatHistory]);
 
   const handleSend = async (e) => {
     e.preventDefault();
@@ -50,8 +50,6 @@ const ChatInterface = () => {
       setChatHistory(updatedHistory);
       setResponse(responseData);
 
-      console.log(`🤖 Personality: ${personality}`);
-      console.log(`🗣️ Language: ${language}`);
     } catch (err) {
       setResponse("⚠️ Oops! Something went wrong: " + err.message);
     } finally {
