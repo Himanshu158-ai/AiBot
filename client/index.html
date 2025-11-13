@@ -5,48 +5,50 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>client</title>
+
     <style>
-      #startup-loader {
+      /* From Uiverse.io by Juanes200122 */
+      .loader {
+        width: 60px;
+        aspect-ratio: 4;
+        background: radial-gradient(circle closest-side, #000 90%, #0000) 0 /
+          calc(100% / 3) 100% space;
+        clip-path: inset(0 100% 0 0);
+        animation: l1 1s steps(4) infinite;
         position: fixed;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #0f172a; /* dark bg */
-        color: white;
-        font-size: 1.5rem;
-        font-family: sans-serif;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
 
-      .spinner {
-        width: 50px;
-        height: 50px;
-        border: 5px solid rgba(255, 255, 255, 0.3);
-        border-top-color: #6366f1;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
-
-      @keyframes spin {
+      @keyframes l1 {
         to {
-          transform: rotate(360deg);
+          clip-path: inset(0 -34% 0 0);
         }
       }
-    </style>
 
+      body {
+        margin: 0;
+        background-color: #fff;
+      }
+    </style>
   </head>
+
   <body>
-    <div id="startup-loader">
-      <div class="spinner"></div>
-    </div>
+    <!-- loader dikhega jab tak React mount nahi hota -->
+    <div class="loader"></div>
+
+    <!-- React yahan mount hoga -->
     <div id="root"></div>
+
     <script>
-      // ye React mount hone ke baad loader hata dega
+      // ✅ React load hone ke baad loader hatao
       window.addEventListener("load", () => {
-        const loader = document.getElementById("startup-loader");
+        const loader = document.querySelector(".loader"); // better selector
         if (loader) loader.remove();
       });
     </script>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

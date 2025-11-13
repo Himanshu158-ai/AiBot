@@ -4,128 +4,237 @@ import styled from 'styled-components';
 const Loader = () => {
   return (
     <StyledWrapper>
-      <div className="loader-wrapper">
-        <div className="loader" />
-        <div className="letter-wrapper">
-          <span className="loader-letter">S</span>
-          <span className="loader-letter">e</span>
-          <span className="loader-letter">a</span>
-          <span className="loader-letter">r</span>
-          <span className="loader-letter">c</span>
-          <span className="loader-letter">h</span>
-          <span className="loader-letter">i</span>
-          <span className="loader-letter">n</span>
-          <span className="loader-letter">g</span>
-        </div>
-      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" height="128px" width="128px" className="pl">
+        <circle strokeDashoffset="-376.4" strokeDasharray="377 377" strokeLinecap="round" transform="rotate(-90,64,64)" strokeWidth={8} stroke="hsl(3,90%,55%)" fill="none" r={60} cy={64} cx={64} className="pl__ring1" />
+        <circle strokeDashoffset="-329.3" strokeDasharray="329.9 329.9" strokeLinecap="round" transform="rotate(-90,64,64)" strokeWidth={7} stroke="hsl(13,90%,55%)" fill="none" r="52.5" cy={64} cx={64} className="pl__ring2" />
+        <circle strokeDashoffset="-288.6" strokeDasharray="289 289" strokeLinecap="round" transform="rotate(-90,64,64)" strokeWidth={6} stroke="hsl(23,90%,55%)" fill="none" r={46} cy={64} cx={64} className="pl__ring3" />
+        <circle strokeDashoffset={-254} strokeDasharray="254.5 254.5" strokeLinecap="round" transform="rotate(-90,64,64)" strokeWidth={5} stroke="hsl(33,90%,55%)" fill="none" r="40.5" cy={64} cx={64} className="pl__ring4" />
+        <circle strokeDashoffset="-225.8" strokeDasharray="226.2 226.2" strokeLinecap="round" transform="rotate(-90,64,64)" strokeWidth={4} stroke="hsl(43,90%,55%)" fill="none" r={36} cy={64} cx={64} className="pl__ring5" />
+        <circle strokeDashoffset="-203.9" strokeDasharray="204.2 204.2" strokeLinecap="round" transform="rotate(-90,64,64)" strokeWidth={3} stroke="hsl(53,90%,55%)" fill="none" r="32.5" cy={64} cx={64} className="pl__ring6" />
+      </svg>
     </StyledWrapper>
   );
 }
 
 const StyledWrapper = styled.div`
-  .loader-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    user-select: none;
-    gap: 10px;
-    margin-bottom:2rem;
+  .pl {
+    width: 5em;
+    height: 5em;
   }
 
-  .loader {
-    width: 20px;
-    height: 20px;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    background-color: transparent;
-    animation: loader-rotate 1.5s linear infinite;
-    z-index: 0;
+  .pl circle {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
   }
 
-  @keyframes loader-rotate {
-    0% {
-      transform: rotate(90deg);
-      box-shadow:
-        0 1px 1px 0 #fff inset,
-        0 3px 5px 0 #ff5f9f inset,
-        0 4px 4px 0 #0693ff inset;
-    }
-    50% {
-      transform: rotate(270deg);
-      background: #7c0911;
-      box-shadow:
-        0 1px 1px 0 #fff inset,
-        0 3px 5px 0 #d60a47 inset,
-        0 4px 4px 0 #fbef19 inset;
-    }
-    100% {
-      transform: rotate(450deg);
-      box-shadow:
-        0 1px 1px 0 #fff inset,
-        0 3px 5px 0 #ff5f9f inset,
-        0 4px 4px 0 #28a9ff inset;
-    }
-  }
-  .letter-wrapper {
-    display: flex;
-    gap: 1px;
-  }
-  .loader-letter {
-    display: inline-block;
-    opacity: 0.4;
-    transform: translateY(0);
-    animation: loader-letter-anim 2s infinite;
-    z-index: 1;
-    border-radius: 50ch;
-    border: none;
+  .pl__ring1 {
+    animation: ring1_ 4s 0s ease-in-out infinite;
   }
 
-  .loader-letter:nth-child(1) {
-    animation-delay: 0s;
-  }
-  .loader-letter:nth-child(2) {
-    animation-delay: 0.1s;
-  }
-  .loader-letter:nth-child(3) {
-    animation-delay: 0.2s;
-  }
-  .loader-letter:nth-child(4) {
-    animation-delay: 0.3s;
-  }
-  .loader-letter:nth-child(5) {
-    animation-delay: 0.4s;
-  }
-  .loader-letter:nth-child(6) {
-    animation-delay: 0.5s;
-  }
-  .loader-letter:nth-child(7) {
-    animation-delay: 0.6s;
-  }
-  .loader-letter:nth-child(8) {
-    animation-delay: 0.7s;
-  }
-  .loader-letter:nth-child(9) {
-    animation-delay: 0.8s;
-  }
-  .loader-letter:nth-child(10) {
-    animation-delay: 0.9s;
+  .pl__ring2 {
+    animation: ring2_ 4s 0.04s ease-in-out infinite;
   }
 
-  @keyframes loader-letter-anim {
-    0%,
-    100% {
-      opacity: 0.4;
-      transform: translateY(0);
+  .pl__ring3 {
+    animation: ring3_ 4s 0.08s ease-in-out infinite;
+  }
+
+  .pl__ring4 {
+    animation: ring4_ 4s 0.12s ease-in-out infinite;
+  }
+
+  .pl__ring5 {
+    animation: ring5_ 4s 0.16s ease-in-out infinite;
+  }
+
+  .pl__ring6 {
+    animation: ring6_ 4s 0.2s ease-in-out infinite;
+  }
+
+  /* Animations */
+  @keyframes ring1_ {
+    from {
+      stroke-dashoffset: -376.237129776;
+      transform: rotate(-0.25turn);
+      animation-timing-function: ease-in;
     }
-    20% {
-      opacity: 1;
-      transform: scale(1.15);
+
+    23% {
+      stroke-dashoffset: -94.247778;
+      transform: rotate(1turn);
+      animation-timing-function: ease-out;
     }
-    40% {
-      opacity: 0.7;
-      transform: translateY(0);
+
+    46%, 50% {
+      stroke-dashoffset: -376.237129776;
+      transform: rotate(2.25turn);
+      animation-timing-function: ease-in;
+    }
+
+    73% {
+      stroke-dashoffset: -94.247778;
+      transform: rotate(3.5turn);
+      animation-timing-function: ease-out;
+    }
+
+    96%, to {
+      stroke-dashoffset: -376.237129776;
+      transform: rotate(4.75turn);
+    }
+  }
+
+  @keyframes ring2_ {
+    from {
+      stroke-dashoffset: -329.207488554;
+      transform: rotate(-0.25turn);
+      animation-timing-function: ease-in;
+    }
+
+    23% {
+      stroke-dashoffset: -82.46680575;
+      transform: rotate(1turn);
+      animation-timing-function: ease-out;
+    }
+
+    46%, 50% {
+      stroke-dashoffset: -329.207488554;
+      transform: rotate(2.25turn);
+      animation-timing-function: ease-in;
+    }
+
+    73% {
+      stroke-dashoffset: -82.46680575;
+      transform: rotate(3.5turn);
+      animation-timing-function: ease-out;
+    }
+
+    96%, to {
+      stroke-dashoffset: -329.207488554;
+      transform: rotate(4.75turn);
+    }
+  }
+
+  @keyframes ring3_ {
+    from {
+      stroke-dashoffset: -288.4484661616;
+      transform: rotate(-0.25turn);
+      animation-timing-function: ease-in;
+    }
+
+    23% {
+      stroke-dashoffset: -72.2566298;
+      transform: rotate(1turn);
+      animation-timing-function: ease-out;
+    }
+
+    46%, 50% {
+      stroke-dashoffset: -288.4484661616;
+      transform: rotate(2.25turn);
+      animation-timing-function: ease-in;
+    }
+
+    73% {
+      stroke-dashoffset: -72.2566298;
+      transform: rotate(3.5turn);
+      animation-timing-function: ease-out;
+    }
+
+    96%, to {
+      stroke-dashoffset: -288.4484661616;
+      transform: rotate(4.75turn);
+    }
+  }
+
+  @keyframes ring4_ {
+    from {
+      stroke-dashoffset: -253.9600625988;
+      transform: rotate(-0.25turn);
+      animation-timing-function: ease-in;
+    }
+
+    23% {
+      stroke-dashoffset: -63.61725015;
+      transform: rotate(1turn);
+      animation-timing-function: ease-out;
+    }
+
+    46%, 50% {
+      stroke-dashoffset: -253.9600625988;
+      transform: rotate(2.25turn);
+      animation-timing-function: ease-in;
+    }
+
+    73% {
+      stroke-dashoffset: -63.61725015;
+      transform: rotate(3.5turn);
+      animation-timing-function: ease-out;
+    }
+
+    96%, to {
+      stroke-dashoffset: -253.9600625988;
+      transform: rotate(4.75turn);
+    }
+  }
+
+  @keyframes ring5_ {
+    from {
+      stroke-dashoffset: -225.7422778656;
+      transform: rotate(-0.25turn);
+      animation-timing-function: ease-in;
+    }
+
+    23% {
+      stroke-dashoffset: -56.5486668;
+      transform: rotate(1turn);
+      animation-timing-function: ease-out;
+    }
+
+    46%, 50% {
+      stroke-dashoffset: -225.7422778656;
+      transform: rotate(2.25turn);
+      animation-timing-function: ease-in;
+    }
+
+    73% {
+      stroke-dashoffset: -56.5486668;
+      transform: rotate(3.5turn);
+      animation-timing-function: ease-out;
+    }
+
+    96%, to {
+      stroke-dashoffset: -225.7422778656;
+      transform: rotate(4.75turn);
+    }
+  }
+
+  @keyframes ring6_ {
+    from {
+      stroke-dashoffset: -203.795111962;
+      transform: rotate(-0.25turn);
+      animation-timing-function: ease-in;
+    }
+
+    23% {
+      stroke-dashoffset: -51.05087975;
+      transform: rotate(1turn);
+      animation-timing-function: ease-out;
+    }
+
+    46%, 50% {
+      stroke-dashoffset: -203.795111962;
+      transform: rotate(2.25turn);
+      animation-timing-function: ease-in;
+    }
+
+    73% {
+      stroke-dashoffset: -51.05087975;
+      transform: rotate(3.5turn);
+      animation-timing-function: ease-out;
+    }
+
+    96%, to {
+      stroke-dashoffset: -203.795111962;
+      transform: rotate(4.75turn);
     }
   }`;
 

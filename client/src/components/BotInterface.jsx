@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { coyWithoutShadows, oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
@@ -47,7 +47,17 @@ const ChatInterface = () => {
       updatedHistory[updatedHistory.length - 1].response = responseData;
 
       // ✅ Correct: set updated array, not string
-      setChatHistory(updatedHistory);
+
+      // {
+      //   if(chatHistory.length===4){
+
+      //   }
+      // }
+      setChatHistory((prev) =>
+        prev.length >= 5
+          ? [...prev.slice(1), { prompt: input, response: responseData }]
+          : [...prev, { prompt: input, response: responseData }]
+      );
       setResponse(responseData);
 
     } catch (err) {
@@ -59,7 +69,7 @@ const ChatInterface = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-gray-100 overflow-x-hidden overflow-y-auto">
+    <div className="flex flex-col h-screen bg-linear-to-br from-gray-900 via-gray-800 to-black text-gray-100 overflow-x-hidden overflow-y-auto">
       {/* Header */}
       <div className="p-4 sm:p-6 bg-gray-800/70 border-b border-gray-700 text-center text-lg sm:text-xl font-semibold shadow-md">
         Learn with {botName} 🤖
@@ -121,11 +131,10 @@ const ChatInterface = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`px-4 py-3 rounded-lg shadow-md font-semibold transition-transform duration-300 ${
-              loading
+            className={`px-4 py-3 rounded-lg shadow-md font-semibold transition-transform duration-300 ${loading
                 ? "bg-gray-700 text-gray-400 cursor-not-allowed"
-                : "bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:scale-105"
-            }`}
+                : "bg-linear-to-r from-blue-600 to-purple-600 text-white hover:scale-105"
+              }`}
           >
             {loading ? "..." : "Ask →"}
           </button>
